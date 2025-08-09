@@ -21,7 +21,7 @@ import c from '../assets/c.png'
 import java from '../assets/java.png';
 import python from '../assets/python.png';
 import sql from '../assets/sql.png';
-import resume from '../assets/resume.pdf'
+import resume from '../assets/rakesh_resume.pdf'
 import ResumePage from './Resume';
 
 
@@ -41,7 +41,7 @@ const AboutSection = () => {
           
           <div className="flex flex-wrap gap-4 pt-4">
               <a href={resume}
-                download="resume.pdf"
+                download="rakesh_resume.pdf"
                 className="cursor-pointer px-8 py-2.5 border-2 border-green-500 text-white rounded-full hover:bg-green-500 transition-all duration-700 font-mono"
               >Get My Resume</a>
               <a
