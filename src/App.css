@@ -1,0 +1,245 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import 'tailwindcss';
+
+* {
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: white;
+}
+
+.header img{
+  position: absolute;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  margin-top: 20px;
+  border-radius: 50%;
+}
+.name {
+  text-shadow: 0 0 10px rgb(255, 255, 255);
+}
+.box {
+  border: 1px solid rgb(59, 249, 59);
+}
+.main-head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 5rem;
+  font-weight: 600;
+  color: #4385F5;
+  letter-spacing: 2px;
+}
+.main-head .second, .main-head .sixth {
+  color: #EB4235;
+}
+.main-head .third {
+  color: #F9BC04;
+}
+.main-head .fifth {
+  color: #34A853;
+}
+
+.search-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: 100px;
+}
+.searching {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.search-engine {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 95%;
+  max-width: 800px;
+}
+
+.search-engine .fasearch {
+  position: absolute;
+  left: 15px;
+  color: gray;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+  z-index: 1;
+}
+
+.search-engine input.search-input {
+  width: 100%;
+  padding: 12px 50px;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.8);
+  border: 2px solid rgba(154, 154, 154, 0.4);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.search-engine input.search-input:focus {
+  outline: none;
+  border: 2px solid #4385F5;
+  background: white;
+  box-shadow: 0 0 20px rgba(67, 133, 245, 0.3);
+}
+
+.search-engine .mic-icon {
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  right: 15px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.search-engine .mic-icon:hover {
+  transform: scale(1.1);
+}
+
+.search-engine .fasearch:hover {
+  color: #4385F5;
+}
+.search-list {
+  cursor: pointer;
+  width: 95%;
+  max-width: 800px;
+  background: white;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+}
+.search-list li {
+  color: rgb(51, 98, 229);
+  font-weight: 500;
+  margin-top: 10px;
+  transition: 0.5s ease-in;
+}
+.search-list li:hover {
+  color: blueviolet;
+}
+
+/* About-Section */
+.content-head {
+  display: flex;
+  align-items: center;
+}
+.content-head img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(204, 204, 204, 0.4);
+  border: 1px solid gray;
+  padding: 2px;
+  margin-right: 10px;
+}
+.content-head h2 {
+  font-weight: 400;
+  color: rgb(37, 37, 37);
+}
+.sub-content h1 {
+  color: #1A0DAB;
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+/* About-Main*/
+.intro-left h1 , .intro-left p, .intro-left h2{
+  font-family: Courier, monospace;
+}
+.intro-buttons button{
+  transition: 0.7s ease;
+}
+.intro-buttons button:hover {
+  background: #EB4235;
+}
+.about-skills {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 100px;
+}
+.about-skills .aboutme p {
+  color: white;
+  font-family: Courier, monospace;
+}
+
+.animated-teal-gradient {
+  background: linear-gradient(to right, #5eead4, #2dd4bf, #10b981, #2dd4bf, #5eead4);
+  background-size: 200% auto;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: gradient-animation 5s ease infinite;
+}
+.animated-blue-purple-gradient {
+  background: linear-gradient(to right, #3b82f6, #8b5cf6, #ec4899, #8b5cf6, #3b82f6);
+  background-size: 200% auto;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: gradient-animation 5s ease infinite;
+}
+
+.animated-gradient-text {
+  background: linear-gradient(to right, #f59e0b, #f97316, #ef4444, #f97316, #f59e0b);
+  background-size: 200% auto;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: gradient-animation 5s ease infinite;
+}
+.animated-genesis-gradient {
+  background: linear-gradient(to right, #fbbf24, #f59e0b, #d97706, #f59e0b, #fbbf24);
+  background-size: 200% auto;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: gradient-animation 5s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@media (max-width: 450px) {
+  .main-head {
+    font-size: 4rem;
+  }
+  .search-engine input.search-input {
+    font-size: 0.9rem;
+    padding: 10px 40px;
+  }
+}
+
+@media (max-width: 350px) {
+  .main-head {
+    font-size: 3.5rem;
+  }
+  .search-engine input.search-input {
+    font-size: 0.8rem;
+  }
+  .larger {
+    font-size: 1.5rem;
+  }
+}
