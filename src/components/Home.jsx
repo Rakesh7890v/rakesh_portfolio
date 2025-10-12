@@ -20,42 +20,35 @@ const Home = () => {
     const queryParam = params.get('query');
     
     if (queryParam) {
-      sessionStorage.setItem('searchQuery', queryParam);
       return queryParam;
     } else {
-      return sessionStorage.getItem('searchQuery') || '';
+      return '';
     }
   };
 
   const [query, setQuery] = useState(getInitialState);
   const [filteredSuggestions, setFilteredSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
+  const [submittedQuery, setSubmittedQuery] = useState(getInitialState);
   
-  const getSearchState = () => {
-    const searchQuery = query.toLowerCase();
+  const getSearchState = (searchQuery) => {
+    const lowerQuery = searchQuery.toLowerCase();
     return {
-      achievement: searchQuery === 'achievements',
-      project: searchQuery === 'projects', 
+      achievement: lowerQuery === 'achievements',
+      project: lowerQuery === 'projects', 
     };
   };
 
-  const [searchState, setSearchState] = useState(getSearchState());
+  const [searchState, setSearchState] = useState(getSearchState(getInitialState()));
 
   useEffect(() => {
-    setSearchState(getSearchState());
-    
-    if (query && !directNavigationPages.includes(query)) {
-      if(localStorage.getItem('Searched')){
-        setSearched(true);
-      }
-      sessionStorage.setItem('searchQuery', query);
+    if (submittedQuery && !directNavigationPages.includes(submittedQuery)) {
+      setSearched(true);
       const searchParams = new URLSearchParams(location.search);
-      searchParams.set('query', query);
+      searchParams.set('query', submittedQuery);
       navigate(`?${searchParams.toString()}`, { replace: true });
-    }else{
-      setSearched(false);
     }
-  }, [query, navigate, location.search]);
+  }, [submittedQuery, navigate, location.search]);
 
   const handleInputChange = (e) => {
     const value = e.target.value;
@@ -133,8 +126,15 @@ const Home = () => {
 
   const handleSuggestionClick = (suggestion) => {
     setQuery(suggestion);
+    setSubmittedQuery(suggestion);
+    
+    setSearchState({ achievement: false, project: false });
+    
+    setTimeout(() => {
+      setSearchState(getSearchState(suggestion));
+    }, 0);
+    
     setSearched(true);
-    localStorage.setItem('Searched',true);
     setFilteredSuggestions([]);
     setShowSuggestions(false);
     setSelectedIndex(-1);
@@ -146,8 +146,15 @@ const Home = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setSubmittedQuery(query);
+    
+    setSearchState({ achievement: false, project: false });
+    
+    setTimeout(() => {
+      setSearchState(getSearchState(query));
+    }, 0);
+    
     setSearched(true);
-    localStorage.setItem('Searched',true);
     setShowSuggestions(false);
     setSelectedIndex(-1);
     

@@ -1,8 +1,8 @@
-import React from 'react';
 import finance from '../assets/finance.png';
 import work from '../assets/work.png';
 import canteen from '../assets/canteen.png';
 import mock from '../assets/mock.png';
+import logo from '../assets/logo.png';
 
 const Projects = () => {
   return (
@@ -35,6 +35,25 @@ const Projects = () => {
                     <p>Developed an agents for users to place orders in the college canteen and automate inventory management. Everything is automated through these agents, and they can handle all related tasks efficiently.</p>
                 </div>
             </a>
+
+            <a href="https://youtu.be/nAVHNYPPA2E" target="_blank">
+                <div className='m-4 bg-white max-w-[800px] sub-content cursor-pointer'>
+                    <div className="content-head">
+                        <img src={logo} alt="SpeedCart Logo" />
+                        <div className="flex flex-col">
+                            <h2>SpeedCart - Food Ordering</h2>
+                            <p className='text-gray-500 text-[0.9rem]'>http://www.speedcart.com</p>
+                        </div>
+                    </div>
+                    <h1 className='cursor-pointer'>SpeedCart - Food Ordering Platform</h1>
+                    <p>
+                        SpeedCart is a food ordering application.
+                        It provides a seamless experience for users to browse, order, and track food items, while allowing
+                        admins to manage the menu, view orders, and monitor revenue in real-time.
+                    </p>
+                </div>
+            </a>
+
 
             <a href="https://yourblogging.vercel.app/" target="_blank">
                 <div className='m-4 bg-white max-w-[800px] sub-content cursor-pointer'>
