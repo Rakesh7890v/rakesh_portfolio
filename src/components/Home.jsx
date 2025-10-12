@@ -42,11 +42,18 @@ const Home = () => {
   const [searchState, setSearchState] = useState(getSearchState(getInitialState()));
 
   useEffect(() => {
-    if (submittedQuery && !directNavigationPages.includes(submittedQuery)) {
-      setSearched(true);
-      const searchParams = new URLSearchParams(location.search);
-      searchParams.set('query', submittedQuery);
-      navigate(`?${searchParams.toString()}`, { replace: true });
+    // Only update URL for non-navigation pages (Achievements, Projects)
+    if (submittedQuery) {
+      const isDirectNav = directNavigationPages.some(
+        page => page.toLowerCase() === submittedQuery.toLowerCase()
+      );
+      
+      if (!isDirectNav) {
+        setSearched(true);
+        const searchParams = new URLSearchParams(location.search);
+        searchParams.set('query', submittedQuery);
+        navigate(`?${searchParams.toString()}`, { replace: true });
+      }
     }
   }, [submittedQuery, navigate, location.search]);
 
@@ -127,39 +134,55 @@ const Home = () => {
   const handleSuggestionClick = (suggestion) => {
     setQuery(suggestion);
     setSubmittedQuery(suggestion);
-    
-    setSearchState({ achievement: false, project: false });
-    
-    setTimeout(() => {
-      setSearchState(getSearchState(suggestion));
-    }, 0);
-    
-    setSearched(true);
     setFilteredSuggestions([]);
     setShowSuggestions(false);
     setSelectedIndex(-1);
     
-    if (directNavigationPages.includes(suggestion)) {
+    // Check case-insensitively for direct navigation pages
+    const isDirectNav = directNavigationPages.some(
+      page => page.toLowerCase() === suggestion.toLowerCase()
+    );
+    
+    if (isDirectNav) {
+      // Navigate directly without setting search state
       navigate(suggestion.toLowerCase());
+    } else {
+      // Reset search state before setting new one
+      setSearchState({ achievement: false, project: false });
+      
+      // Then set the new search state
+      setTimeout(() => {
+        setSearchState(getSearchState(suggestion));
+      }, 0);
+      
+      setSearched(true);
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setSubmittedQuery(query);
-    
-    setSearchState({ achievement: false, project: false });
-    
-    setTimeout(() => {
-      setSearchState(getSearchState(query));
-    }, 0);
-    
-    setSearched(true);
     setShowSuggestions(false);
     setSelectedIndex(-1);
     
-    if (directNavigationPages.includes(query)) {
+    // Check case-insensitively for direct navigation pages
+    const isDirectNav = directNavigationPages.some(
+      page => page.toLowerCase() === query.toLowerCase()
+    );
+    
+    if (isDirectNav) {
+      // Navigate directly without setting search state
       navigate(query.toLowerCase());
+    } else {
+      // Reset search state before setting new one
+      setSearchState({ achievement: false, project: false });
+      
+      // Then set the new search state
+      setTimeout(() => {
+        setSearchState(getSearchState(query));
+      }, 0);
+      
+      setSearched(true);
     }
   };
 
