@@ -17,7 +17,7 @@ const ResumePage = () => {
   const [education] = useState({
     college: {
       period: '2022-2026',
-      details: 'I am currently pursuing my B.Tech 3rd year Artificial intelligence and Data science at Kongunadu college of engineering and technology.(* with 9.35 CGPA)'
+      details: 'I am currently pursuing my B.Tech final year Artificial intelligence and Data science at Kongunadu college of engineering and technology.(* with 8.7 CGPA)'
     },
     higherSecondary: {
       period: '2021-2022',
@@ -25,7 +25,7 @@ const ResumePage = () => {
     },
     secondary: {
       period: '2019-2020',
-      details: 'I did my Secondary at Desia Matriculation Hr sec scchool, Vellore (with 86.8%)'
+      details: 'I did my Secondary at Desia Matriculation Hr sec scchool, Vellore (with 87%)'
     }
   });
 
